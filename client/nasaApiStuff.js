@@ -8,20 +8,20 @@ const nasaUrlWithKey = "https://api.nasa.gov/planetary/apod?api_key=UPlYK17b5vvK
 
 
 
-export function getNasaPhoto(){
+export function getNasaInfo(){
 
-
-    return request.get(nasaUrlWithKey)
+    return request.get(nasaUrlWithKey+"&date=2018-11-13")
     .then(res => {
         let nasaInfo = res.body
         console.log(nasaInfo)
 
-        if(!nasaInfo.image){
-            nasaInfo.image = defaultImage
+        nasaInfo.image = defaultImage
+
+        if(nasaInfo.media_type == 'image'){
+            nasaInfo.image = nasaInfo.url
         }
 
-        
-      return nasaInfo.image
+
+      return nasaInfo
     })
-  
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import NasaPhotos from './Nasaphotos'
-import {getNasaPhoto} from '../nasaApiStuff'
+import {getNasaInfo} from '../nasaApiStuff'
 
 class App extends React.Component {
   constructor(props) {
@@ -8,17 +8,16 @@ class App extends React.Component {
 
 
     this.state = {
-      nasaApod : {},
-      image: ""
+      nasaApod : {}
     }
   }
 
   componentDidMount(){
 
-    getNasaPhoto()
-        .then((imageUrl) => {
+    getNasaInfo()
+        .then((nasaInfo) => {
         this.setState({
-          image: imageUrl
+          nasaApod: nasaInfo
         })
       }
     )
@@ -29,7 +28,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Nasa is alive!</h1>
-        <NasaPhotos imageUrl={this.state.image}/>
+        <NasaPhotos nasaInfo={this.state.nasaApod}/>
       </div>
     )
   }

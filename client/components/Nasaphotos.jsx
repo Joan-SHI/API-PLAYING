@@ -4,7 +4,9 @@ function NasaPhotos(props) {
     return (
         <div>
             <p>nasaPhotos:</p>
-            <img src = {props.imageUrl}/>
+            <h2>{props.nasaInfo.title}</h2>
+            <h2>{props.nasaInfo.date}</h2>
+            <img src = {props.nasaInfo.image}/>
         </div>
     )
 }
